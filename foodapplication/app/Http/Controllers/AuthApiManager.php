@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthApiManager extends Controller
 {
@@ -29,7 +31,7 @@ class AuthApiManager extends Controller
 
    
    
-   function Registraion(Request $request) {
+   function Registration(Request $request) {
     if (empty($request->name) && empty($request->email) && empty($request->password)) {
         return array("status" => "failed", "message" => "All fields are required") ;
     }
@@ -38,7 +40,7 @@ class AuthApiManager extends Controller
         'type' => "customer",
         "name" => $request->name,
         "email" => $request->email,
-        "password" => $request->password,
+        "password" => Hash::make($request->password)
     ]);
 
     if (!$user ) {

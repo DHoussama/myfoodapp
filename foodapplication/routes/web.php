@@ -6,6 +6,7 @@ use App\Http\controllers\ProductManager;
 use App\Http\Middleware\RoleAdmin;
 
 
+
 Route::get('/', function () {
     return "hi";
 });
@@ -14,8 +15,9 @@ Route::get('dashboard', function() {
     return "dashboard" ;
 })->name('dashboard') ;
 
-Route::get("login", [AuthApiManager::class, "login"])->name("login") ;
-Route::post("login", [AuthApiManager::class, "loginPost"])->name("login.post");
+Route::get("login", [AuthManager::class, "login"])->name("login");
+Route::get("logout", [AuthManager::class, "logout"])->name("logout");
+Route::post("login", [AuthManager::class, "loginPost"])->name("login.post");
 
 Route::prefix("admin")->middleware(RoleAdmin::class)->group(function() {
    Route::get('dashboard',function() {
