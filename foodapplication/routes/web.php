@@ -1,18 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\controllers\AuthManager;
+use App\Http\controllers\ProductManager;
+use App\Http\Middleware\RoleAdmin;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
-    return view('welcome');
+    return "hi";
 });
+
+Route::get('dashboard', function() {
+    return "dashboard" ;
+})->name('dashboard') ;
+
+Route::get("login", [AuthApiManager::class, "login"])->name("login") ;
+Route::post("login", [AuthApiManager::class, "loginPost"])->name("login.post");
+
+Route::prefix("admin")->middleware(RoleAdmin::class)->group(function() {
+   Route::get('dashboard',function() {
+  return "dashboard" ;
+  })->name('dashboard') ;
+   Route::get('products',[ProductManager::class, "ListProducts"])->name("products");
+   Route::post('products',[ProductManager::class, "addProducts"])->name("product.add");
+   Route::post('product/delete',[ProductManager::class, "deleteProducts"])->name("product.delete");
+});
+
