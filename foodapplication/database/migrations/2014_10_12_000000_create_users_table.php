@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('destination_address');
-            $table->string('destination_lat');
-            $table->string('destination_lon');
+            $table->string('destination_address')->nullable();
+            $table->string('destination_lat')->nullable();
+            $table->string('destination_lon')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

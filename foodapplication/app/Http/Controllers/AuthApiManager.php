@@ -1,19 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthApiManager extends Controller
 {
    function login(Request $request) {
-    if (empty($request->email) && empty($request->password)) {
+    if (empty($request->email) || empty($request->password)) {
         return array("status" => "failed", "message" => "All fields are required") ;
     }
 
     $user = User::where("email", $request->email)->first();
     if (!$user ) {
-        return array("status" => "failed" , "message" => "Retry with correct credentials") ;
+        return array("status" => "failed" , "message" => "The email address doesn't exist, Please verify it ") ;
     }   
     
     $credentials = $request->only("email","password");
@@ -23,22 +25,26 @@ class AuthApiManager extends Controller
                 "name" => $user->name, "email" => $user->email) ;
     }
 
-    return array("status" => "failed" , "message" => "Retry with correct credentials") ;
+    return array("status" => "failed" , "message" => "Your password is wrong") ;
 
    }
 
    
    
-   function Registraion(Request $request) {
-    if (empty($request->name) && empty($request->email) && empty($request->password)) {
+   function Registration(Request $request) {
+    if (empty($request->name) || empty($request->email) || empty($request->password)) {
         return array("status" => "failed", "message" => "All fields are required") ;
+    }
+
+    if  (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+        return array("status" => "failed", "message" => "Please enter a valid email address");
     }
 
     $user = User::create([
         'type' => "customer",
         "name" => $request->name,
         "email" => $request->email,
-        "password" => $request->password,
+        "password" => Hash::make($request->password)
     ]);
 
     if (!$user ) {
