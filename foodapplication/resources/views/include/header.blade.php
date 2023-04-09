@@ -7,9 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="{{route("products")}}">Products</a>
         <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link" href="{{route("logout")}}">Logout</a>
       </div>
     </div>
   </div>

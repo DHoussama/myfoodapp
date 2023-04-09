@@ -43,13 +43,13 @@
                 </form>
             </div>
             <div class="col-12 col-md-6">
-                <div class="fs-5 fw-bold mb-2 text-decoration-underline">List of all item:</div>
+                <div class="fs-5 fw-bold mb-2 text-decoration-underline">List of all items:</div>
                 <ul class="list-group">
                     @foreach($products as $product)
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-8">
-                                    <div class="fw-bold">{{$product->name}} | Price: ₹{{$product->price}}</div>
+                                    <div class="fw-bold">{{$product->name}} | Price: {{$product->price}}$</div>
                                     <small>{{$product->description}}</small>
                                 </div>
                                 <div class="col-4">
