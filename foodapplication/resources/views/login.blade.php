@@ -10,6 +10,7 @@
             background-repeat: no-repeat;
             height: 100vh;
             font-family: Arial, sans-serif;
+            background-attachment: fixed;
             
         }
         
