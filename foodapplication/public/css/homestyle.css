@@ -35,18 +35,20 @@
     letter-spacing: 7px;
     margin-bottom: 40px;
     text-align: center;
+    color:white;
 }
 
 .gallery .content p{
     font-size: 1.5em;
     margin-bottom: 70px;
     text-align: center;
+    color: white;
 }
 
 .gallery .content a{
-    background: #fff;
+    background: #24262b;
     padding: 15px;
-    color: aqua;
+    color: #e91e63;
     border-radius: 25%;
     position: absolute;
     left: 200px;

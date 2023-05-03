@@ -13,7 +13,7 @@ Route::get('/', function () {
     return view("home");
 });
 
-
+Route::get("goHome", [AuthManager::class, "goHome"])->name("goHome");
 
 Route::get("login", [AuthManager::class, "login"])->name("login");
 Route::post("login", [AuthManager::class, "loginPost"])->name("login.post");
@@ -28,5 +28,8 @@ Route::prefix("admin")->middleware(RoleAdmin::class)->group(function() {
    Route::post('products',[ProductManager::class, "addProducts"])->name("product.add");
    Route::get('product/delete',[ProductManager::class, "deleteProducts"])->name("product.delete");
    Route::post('order/assign',[OrderManager::class, "assignOrder"])->name("order.assign");
+   Route::get('order/list', [OrderManager::class, "ListOrders"])->name("Order.list");
+   Route::get('order/dashboard', [OrderManager::class, "newOrders"])->name("Dashboard");
+   
 });
 

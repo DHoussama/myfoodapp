@@ -10,10 +10,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="{{route("goHome")}}">Home</a>
           <a class="nav-link" href="#">Menu</a>
           <a class="nav-link" href="#">Deals</a>
           <a class="nav-link" href="#">Locations</a>
-          <a class="nav-link" href="#">Contact</a>
           <a class="nav-link" href="{{route("login")}}">Login</a>
         </div>
       </div>

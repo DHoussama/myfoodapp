@@ -25,7 +25,7 @@ class OrderManager extends Controller
                 }
             }
         }
-        return view("dashboard",compact("orders","delivery_boys"));
+        return view("dashboard", compact("orders", "delivery_boys"));
     }
 
     function assignOrder(Request $request) {
@@ -37,6 +37,22 @@ class OrderManager extends Controller
        }
        return redirect(route("dashboard"))->with("Failed", "Order Failed succeffully") ;
        
+    }
 
+    function ListOrders() {
+        $orders = Orders::orderBy("id", "DESC")->get() ;
+        $orders = json_decode(json_encode($orders));
+        $products = Products::get() ;
+        foreach($orders as $Key => $order){
+            $order_item_ids = json_decode($order->items);
+            foreach($order_item_ids as $key2 => $order_item) {
+                foreach($products as $product) {
+                if ($order_item->item_id == $product->id) {
+                $orders[$Key]->item_details[$key2] = $product ;
+                }
+                }
+            }
+        }
+    return view("order", compact("orders"));
     }
 }

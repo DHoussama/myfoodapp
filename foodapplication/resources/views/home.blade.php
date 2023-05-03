@@ -5,10 +5,10 @@
 
 <section class="gallery" id="gallery">
     <video class="video-slide active" autoplay muted loop>
-        <source src="videos/vid1.mp4" type="video/mp4">
+        <source src="videos/vid2.mp4" type="video/mp4">
     </video>
     <video class="video-slide" autoplay muted loop>
-        <source src="videos/vid2.mp4" type="video/mp4">
+        <source src="videos/vid1.mp4" type="video/mp4">
     </video>
     <div class="content active">
         <h5>HamHama Paradise </h5>
@@ -22,10 +22,10 @@
         <a href="https://www.after.life/events" target="_blank" >Read More</a>
     </div>
     
-    <div class="slider-navigation">
-        <div class="nav-btn active"></div>
-        <div class="nav-btn"></div>
-    </div>
+     <div class="slider-navigation">
+        <div class="nav-btn active" style="background-color: green;"></div>
+        <div class="nav-btn" style="background-color: green;"></div>
+      </div>
 
     
     
